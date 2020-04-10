@@ -1,0 +1,17 @@
+body{
+    background: #343a40;
+}
+
+.hero{
+    background: url("./component/home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 450px;
+    color: #fff;
+}
+
+.hero .overlay{
+    height: 450px;
+    background: rgba(0,0,0,0.5);
+}

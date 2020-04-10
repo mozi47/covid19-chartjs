@@ -1,28 +1,36 @@
 import React from 'react'
+import CountUp from 'react-countup'
+import {Bar,Line} from "react-chartjs-2"
 
-const Main = ({confirm,death,recover}) => {
-    
+const Main = ({country,confirm,death,recover}) => {
+    //daily_c.map(c=>{ console.log(c)})
     return (
-        <div className="row mt-5">
-            <div className="col-4">
-                <div className="card bg-secondary py-2">
-                    <h4 className="card-title text-center">CONFIRM CASES</h4>
-                    <h4 className="card-text text-center">{confirm}</h4>
-                </div>
-            </div>
-            <div className="col-4">
-                <div className="card bg-danger py-2">
-                    <h4 className="card-title text-center">TOTAL DEATHS</h4>
-                    <h4 className="card-text text-center">{death}</h4>
-                </div>
-            </div>
-            <div className="col-4">
-                <div className="card bg-success py-2">
-                    <h4 className="card-title text-center">TOTAL RECOVERED</h4>
-                    <h4 className="card-text text-center">{recover}</h4>
-                </div>
-            </div>
+        <>
+        <div className="container my-5">
+        <Bar
+                data={{
+                labels: ['Infected', 'Recovered', 'Deaths'],
+                datasets: [
+                    {
+                    label: 'People',
+                    backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                    data: [confirm, recover, death],
+                    },
+                ],
+                }}
+                options={{
+                responsive: true,
+                legend: { display: false },
+                title: { display: true, fontColor:"white",text: `COVID-19 REPORT OF ${country}` },
+                scales: {
+                    yAxes: [{ticks: {fontColor: "white"}}],
+                    xAxes: [{ticks: {fontColor: "white"}}]
+                }
+                }}
+            />
+            <hr className="bg-light my-4"/>
         </div>
+        </>
         )
 }
 
